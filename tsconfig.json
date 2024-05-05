@@ -1,8 +1,19 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "baseUrl": ".",//设置baseurl
     "strictNullChecks": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  }
+    "jsxImportSource": "preact",
+     "plugins": [
+      {
+        "name": "@astrojs/ts-plugin"
+      }
+    ],
+     "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"]
+    }
+  },
+  "include": ["src/**/*"]
 }
