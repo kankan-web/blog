@@ -66,3 +66,8 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 ## Credit
 
 This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+
+
+# 全局样式设计规则
+1. 不变的样式或变量，写在global.css中
+2. 样式变量，写在baseLayout.astro中

@@ -1,13 +1,9 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
 import Greeting from "../components/Greeting";
 
 const pageTitle = "首页";
 ---
 
-<BaseLayout pageTitle={pageTitle}>
-  <h1 class="text-3xl font-bold underline text-white">Hello world!</h1>
-  <h2>My awesome blog subtitle</h2>
-  <!-- <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} /> -->
-  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
-</BaseLayout>
+<!-- <BaseLayout pageTitle={pageTitle}> --><!-- <h1 class="text-3xl font-bold underline text-white">Hello world!</h1> --><!-- <h2>My awesome blog subtitle</h2> --><!-- <Greeting messages={["Hi", "Hello", "Howdy", "Hey there"]} /> --><!-- <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} /> --><!-- </BaseLayout> -->
+<MainGridLayout />

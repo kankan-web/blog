@@ -9,15 +9,5 @@ import icon from "astro-icon";
 export default defineConfig({
   site: "https://example.com",
   base: "/",
-  integrations: [
-    mdx(),
-    sitemap(),
-    preact(),
-    tailwind(),
-    icon({
-      include: {
-        "material-symbols": ["*"],
-      },
-    }),
-  ],
+  integrations: [mdx(), sitemap(), preact(), tailwind(), icon()],
 });

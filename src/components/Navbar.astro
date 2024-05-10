@@ -1,0 +1,40 @@
+---
+import { url } from "@utils/url-util";
+import { Icon } from "astro-icon/components";
+import { navBarConfig } from "@/config.js";
+---
+
+<div
+  class="card-base sticky top-0 overflow-visible max-w-[var(--page-width)] h-[4.5rem] rounded-t-none mx-auto flex items-center justify-between px-4"
+>
+  <a
+    href={url("/")}
+    class="btn-plain h-[1.5rem] px-5 font-bold rounded-lg active:scale-95"
+  >
+    <!-- [ ]:1. 需要修复本地Icon不能使用问题 -->
+    <!-- <Icon name="home" size={"1.75rem"} class="mb-1 mr-2" /> -->
+    kankan
+  </a>
+  <div class="md:flex">
+    {
+      navBarConfig.map((item) => {
+        return (
+          <a
+            aria-label={item.name}
+            href={item.external ? item.url : url(item.url)}
+            target={item.external ? "_blank" : null}
+            class="btn-plain h-11 font-bold px-5 rounded-lg active:scale-95"
+          >
+            <div class="flex items-center">
+              {item.name}
+              {/* #[ ]:2.需要修复本地Icon不能使用问题 */}
+              {/* {item.external && <Icon size="14" name="" />} */}
+            </div>
+          </a>
+        );
+      })
+    }
+  </div>
+  <!-- #TODO:搜索部分和主题切换部分 -->
+  <div>搜索部分</div>
+</div>
