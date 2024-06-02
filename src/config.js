@@ -1,3 +1,4 @@
+//头部导航数据
 export const navBarConfig = [
   {
     name: "首页",
@@ -21,3 +22,21 @@ export const navBarConfig = [
     external: true, //显示外部链接图标，并在新标签页中打开
   },
 ];
+//个人资料信息
+export const profileConfig = {
+  name: "Kankan",
+  title: "Web Developer",
+  avatar: "/src/assets/img/avatar.jpg",
+  bio: "Kankan's Blog",
+  sns: [
+    {
+      name: "Github",
+      icon: "ri-github-fill",
+      link: "https://github.com/kankan-web",
+    },
+    {
+      name: "Twitter",
+    },
+  ],
+};
+

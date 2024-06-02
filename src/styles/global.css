@@ -22,6 +22,7 @@ html {
     --radius-large: 1rem;
     /* 主题颜色 */
     --primary:oklch(.7 .14 250 );
+    --text-white:#fff;
   }
 /* 导航样式 */
 .hamburger {

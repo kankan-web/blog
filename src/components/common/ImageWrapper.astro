@@ -1,0 +1,18 @@
+---
+import type { ImageMetadata } from 'astro';
+import { Image } from "astro:assets";
+const {id, src, alt, basePath = '/',className} = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/img/*.{jpeg,jpg,png,gif}')
+if (!images[src]) throw new Error(`"${src}" does not exist in glob: "src/assets/img/*.{jpeg,jpg,png,gif}"`);
+---
+<div class:list={[className]}>
+  <Image src={images[src]()} alt={alt} />
+</div>
+<!-- 
+这个astro函数的功能是根据提供的图片路径src，从项目中的/src/assets/img/目录下匹配对应的图片元数据（ImageMetadata），并渲染出一个图片标签（<Image />）。
+
+首先，函数通过import.meta.glob动态导入了/src/assets/img/目录下所有jpeg、jpg、png和gif格式的图片的元数据。
+然后，函数会检查传入的src路径是否在已导入的图片元数据中，如果不存在则抛出错误。
+最后，函数会使用匹配到的图片元数据渲染一个图片标签，并将其插入到一个带有自定义类名的div容器中。
+注意：函数中使用了astro的新特性，如import type和astro:assets，以及ES6的解构赋值语法和动态导入。
+ -->

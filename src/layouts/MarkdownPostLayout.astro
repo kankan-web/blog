@@ -1,5 +1,5 @@
 ---
-const { frontmatter } = Astro.props;
+const { frontmatter } = Astro.props;//接收组件传值
 
 import BaseLayout from "./BaseLayout.astro";
 ---
@@ -9,6 +9,7 @@ import BaseLayout from "./BaseLayout.astro";
   <p><em>{frontmatter.description}</em></p>
   <p>Written by: {frontmatter.author}</p>
   <div class="tags">
+    jfsdo
     {
       frontmatter.tags.map((tag) => (
         <p class="tag">
