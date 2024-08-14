@@ -1,5 +1,8 @@
 ---
+import ImageWrapper from '@components/common/ImageWrapper.astro'
 import {profileConfig} from '../../config'
+
+const {sayhi,avatar,name,bio,links}=profileConfig
 ---
 
 <!-- before:bg-gradient-to-r from-blue-400 to-blue-500 before:absolute before:w-full
@@ -9,15 +12,15 @@ before:h-full before:left-0 before:top-0 before:content-['']" -->
     class="card-content py-4 px-5 min-h-80 relative bg-gradient-to-r from-blue-500 form-10% to-blue-500"
   >
     <div
-      class="author-info-sayhi text-center text-white bg-white bg-opacity-20 text-xs m-auto py-0.5 px-2 cursor-pointer w-fit rounded-xl"
+      class="author-info-sayhi text-center text-white bg-white bg-opacity-20 text-xs m-auto py-1.5 px-2.5 cursor-pointer w-fit rounded-xl"
     >
-      不要太劳累了，早睡更健康
+      {sayhi}
     </div>
-    <div class="author-info-avatar my-11 mx-auto flex justify-center w-28 h-28">
-      <img />
+    <div class="author-info-avatar my-11 mx-auto flex justify-center w-28 h-28 opacity-100 :hover:opacity-0">
+      <ImageWrapper src={avatar} alt={name}></ImageWrapper>
     </div>
     <div
-      class="author-info-description absolute top-12 w-full left-0 px-5 py-4 text-white"
+      class="author-info-description absolute top-12 w-full left-0 px-5 py-4 text-white opacity-0 hover:opacity-100"
     >
       <div
         class="author-info-description-text leading-snug mx-0 my-2 text-justify text-white"
@@ -48,15 +51,16 @@ before:h-full before:left-0 before:top-0 before:content-['']" -->
         <h1
           class="author-info-name text-left font-weight-bold text-white text-xl mb-1 mt-0"
         >
-          蛋蛋
+          {name}
         </h1>
         <h1 class="author-info-desc text-xs text-white opacity-60">
-          生活明朗 万物可爱
+         {bio}
         </h1>
       </a>
       <div
         class="card-info-social-icons mx-0 my-0 flex justify-start flex-row flex-wrap cursor-pointer"
       >
+      
         <a href="" class="m-0 ml-2 cursor-pointer flex">
           <i
             class="text-white w-10 h-10 text-base flex items-center justify-center transition-all p-2 rounded-3xl"

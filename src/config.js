@@ -24,11 +24,12 @@ export const navBarConfig = [
 ];
 //个人资料信息
 export const profileConfig = {
-  name: "Kankan",
-  title: "Web Developer",
-  avatar: "/src/assets/img/avatar.jpg",
-  bio: "Kankan's Blog",
-  sns: [
+  sayhi: "不要太劳累了，早睡更健康",
+  name: "蛋蛋",
+  avatar: "/src/assets/img/avatar.jpg", //头像
+  bio: "生活明朗 万物可爱",
+  //链接地址
+  links: [
     {
       name: "Github",
       icon: "ri-github-fill",
