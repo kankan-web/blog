@@ -1,12 +1,18 @@
 ---
-import type { ImageMetadata } from 'astro';
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-const {id, src, alt, basePath = '/',className} = Astro.props;
-const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/img/*.{jpeg,jpg,png,gif}')
-if (!images[src]) throw new Error(`"${src}" does not exist in glob: "src/assets/img/*.{jpeg,jpg,png,gif}"`);
+const { id, src, alt, basePath = "/", className, imageClass } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/img/*.{jpeg,jpg,png,gif}"
+);
+if (!images[src])
+  throw new Error(
+    `"${src}" does not exist in glob: "src/assets/img/*.{jpeg,jpg,png,gif}"`
+  );
 ---
+
 <div class:list={[className]}>
-  <Image src={images[src]()} alt={alt} />
+  <Image src={images[src]()} alt={alt} class={imageClass} />
 </div>
 <!-- 
 这个astro函数的功能是根据提供的图片路径src，从项目中的/src/assets/img/目录下匹配对应的图片元数据（ImageMetadata），并渲染出一个图片标签（<Image />）。

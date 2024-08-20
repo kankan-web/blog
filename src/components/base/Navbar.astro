@@ -5,14 +5,13 @@ import { navBarConfig } from "@/config.js";
 ---
 
 <div
-  class="card-base sticky top-0 overflow-visible max-w-[var(--page-width)] h-[4.5rem] rounded-t-none mx-auto flex items-center justify-between px-4"
+  class="card-base sticky top-0 overflow-visible max-w-[var(--page-width)] h-[3.5rem] rounded-t-none mx-auto flex items-center justify-between px-4"
 >
   <a
     href={url("/")}
     class="btn-plain h-[1.5rem] px-5 font-bold rounded-lg active:scale-95"
   >
-    <!-- [ ]:1. 需要修复本地Icon不能使用问题 -->
-    <!-- <Icon name="home" size={"1.75rem"} class="mb-1 mr-2" /> -->
+    <Icon name="home" class="text-[1.75rem] mb-1 mr-2" />
     kankan
   </a>
   <div class="md:flex">
@@ -27,7 +26,6 @@ import { navBarConfig } from "@/config.js";
           >
             <div class="flex items-center">
               {item.name}
-              {/* #[ ]:2.需要修复本地Icon不能使用问题 */}
               {/* {item.external && <Icon size="14" name="" />} */}
             </div>
           </a>

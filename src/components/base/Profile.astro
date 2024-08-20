@@ -1,25 +1,32 @@
 ---
-import ImageWrapper from '@components/common/ImageWrapper.astro'
-import {profileConfig} from '../../config'
+import ImageWrapper from "@components/common/ImageWrapper.astro";
+import { profileConfig } from "@/config";
+import { Icon } from "astro-icon/components";
 
-const {sayhi,avatar,name,bio,links}=profileConfig
+const { sayhi, avatar, name, bio, links } = profileConfig;
 ---
 
 <!-- before:bg-gradient-to-r from-blue-400 to-blue-500 before:absolute before:w-full
 before:h-full before:left-0 before:top-0 before:content-['']" -->
-<div class="card-base">
+<div>
   <div
-    class="card-content py-4 px-5 min-h-80 relative bg-gradient-to-r from-blue-500 form-10% to-blue-500"
+    class="py-4 px-5 min-h-80 relative bg-gradient-to-r from-blue-500 form-10% to-blue-500 rounded-xl"
   >
     <div
-      class="author-info-sayhi text-center text-white bg-white bg-opacity-20 text-xs m-auto py-1.5 px-2.5 cursor-pointer w-fit rounded-xl"
+      class="text-center text-white bg-white bg-opacity-20 text-xs m-auto py-1.5 px-2.5 cursor-pointer w-fit rounded-xl"
     >
       {sayhi}
     </div>
-    <div class="author-info-avatar my-11 mx-auto flex justify-center w-28 h-28 opacity-100 :hover:opacity-0">
-      <ImageWrapper src={avatar} alt={name}></ImageWrapper>
-    </div>
     <div
+      class="my-11 mx-auto flex justify-center w-28 h-28 opacity-100 :hover:opacity-0"
+    >
+      <ImageWrapper
+        src={avatar}
+        alt={name}
+        imageClass="rounded-full border-4 border-white border-solid opacity-1 hover:opacity-0 duration-300"
+      />
+    </div>
+    <!-- <div
       class="author-info-description absolute top-12 w-full left-0 px-5 py-4 text-white opacity-0 hover:opacity-100"
     >
       <div
@@ -41,7 +48,7 @@ before:h-full before:left-0 before:top-0 before:content-['']" -->
         和
         <b style="color:#fff;">文章</b>
       </div>
-    </div>
+    </div> -->
     <div
       class="author-info-button-group flex justify-between w-full item-center"
     >
@@ -54,25 +61,28 @@ before:h-full before:left-0 before:top-0 before:content-['']" -->
           {name}
         </h1>
         <h1 class="author-info-desc text-xs text-white opacity-60">
-         {bio}
+          {bio}
         </h1>
       </a>
       <div
-        class="card-info-social-icons mx-0 my-0 flex justify-start flex-row flex-wrap cursor-pointer"
+        class="card-info-social-icons mx-0 my-0 flex justify-start flex-row flex-wrap cursor-pointer content-center"
       >
-      
-        <a href="" class="m-0 ml-2 cursor-pointer flex">
-          <i
+        <a
+          href=""
+          class="m-0 ml-2 flex items-center justify-center cursor-pointer w-10 h-10 bg-opacity-20 bg-white p-2 rounded-full text-xl"
+        >
+          <!-- <i
             class="text-white w-10 h-10 text-base flex items-center justify-center transition-all p-2 rounded-3xl"
             >i</i
-          >
+          > -->
+          <Icon name="yuque" class="text-white" />
         </a>
-        <a href="" class="m-0 ml-2 cursor-pointer flex">
-          <i
-            class="text-white w-10 h-10 text-base flex items-center justify-center transition-all p-2 rounded-3xl"
-            >o</i
-          ></a
+        <a
+          href=""
+          class="m-0 ml-2 flex items-center justify-center cursor-pointer w-10 h-10 bg-opacity-20 bg-white p-2 rounded-full text-xl"
         >
+          <Icon name="github" class="text-white" />
+        </a>
       </div>
     </div>
   </div>

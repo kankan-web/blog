@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
 import Navbar from "@components/base/Navbar.astro";
-import SideBar from "@components/base/SideBar.astro";
 import Footer from "@components/base/Footer.astro";
 ---
 
@@ -21,9 +20,11 @@ import Footer from "@components/base/Footer.astro";
       </div>
       <Navbar />
     </div>
-    <SideBar
+    <div
       class="row-start-3 row-end-4 col-span-2 lg:row-start-2 lg:row-end-3 lg:col-span-1 lg:max-w-[17.5rem] onload-animation"
-    />
+    >
+      <slot name="sidebar" />
+    </div>
 
     <div
       id="content-wrapper"

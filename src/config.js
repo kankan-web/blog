@@ -32,11 +32,13 @@ export const profileConfig = {
   links: [
     {
       name: "Github",
-      icon: "ri-github-fill",
+      icon: "github",
       link: "https://github.com/kankan-web",
     },
     {
-      name: "Twitter",
+      name: "语雀",
+      icon: "yuque",
+      link: "https://www.yuque.com/kankan-web",
     },
   ],
 };
