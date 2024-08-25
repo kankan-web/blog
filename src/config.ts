@@ -6,15 +6,15 @@ export const navBarConfig = [
   },
   {
     name: "Blog",
-    url: "/blog/",
+    url: "/blog",
   },
   {
     name: "更新日志",
-    url: "/log/",
+    url: "/log",
   },
   {
     name: "关于",
-    url: "/about/",
+    url: "/about",
   },
   {
     name: "Github",
@@ -41,5 +41,10 @@ export const profileConfig = {
       link: "https://www.yuque.com/kankan-web",
     },
   ],
+};
+//分页配置
+export const pagination = {
+  //每页显示的文章数量
+  size: 10,
 };
 

@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from "astro:content";
+import ImageWrapper from "@components/common/ImageWrapper.astro";
+interface Props {
+  entry: CollectionEntry<"blog">;
+  index: number;
+}
+const { entry, index } = Astro.props;
+console.log("---------:", entry);
+---
+
+<div
+  class="flex relative bg-white m-4 h-56 rounded-xl overflow-hidden border border-solid border-[#e0e3ed]"
+  class:list={[{ "flex-row-reverse": index % 2 === 0 }]}
+>
+  <div class="post-card-image flex-1 h-full">
+    <ImageWrapper
+      src={entry.data.heroImage}
+      alt={entry.data.title}
+      className="w-full h-full"
+      imageClass="w-full h-full object-cover"
+    />
+  </div>
+  <div class="post-card-main flex-[2_2_0%]">
+    <div class="post-card-title">{entry.data.title}</div>
+    <div class="post-card-type">{entry.data.category}</div>
+    <div class="post-card-description">{entry.data.description}</div>
+    <div class="post-card-time">{entry.data.date}</div>
+  </div>
+</div>
