@@ -94,3 +94,16 @@ html.dark {
 .dark .nav-links a {
   color: #fff;
 }
+/* 多行省略 */
+  .multi-line-ellipsis {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* 控制显示的行数 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .single-line-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

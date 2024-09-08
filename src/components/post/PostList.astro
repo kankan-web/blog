@@ -14,7 +14,15 @@ const { posts } = Astro.props;
     {
       posts.map((post, index) => (
         <li>
-          <PostCard entry={post} index={index} />
+          <PostCard
+            entry={post}
+            index={index}
+            title={post.data.title}
+            heroImage={post.data.heroImage}
+            category={post.data.category}
+            description={post.data.description}
+            tags={post.data.tags}
+          />
         </li>
       ))
     }

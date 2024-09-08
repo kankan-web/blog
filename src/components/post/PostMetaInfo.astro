@@ -1,0 +1,30 @@
+---
+import { formatDateToYYYYMMDD } from "@/utils/data-format";
+import { Icon } from "astro-icon/components";
+interface Props {
+  words: number;
+  readingMinutes: number;
+  date: Date;
+  className?: string;
+}
+
+const { words, readingMinutes, date, className } = Astro.props;
+---
+
+<div
+  class="flex flex-wrap gap-2 text-sm text-[var(--text-secondary)]"
+  class:list={[className]}
+>
+  <div class="flex items-center gap-1">
+    <Icon name="date" class="inline-block" />
+    {formatDateToYYYYMMDD(date)}
+  </div>
+  <div class="flex items-center gap-1">
+    <Icon name="record" class="inline-block" />
+    {words} 字
+  </div>
+  <div class="flex items-center gap-1">
+    <Icon name="time" class="inline-block" />
+    {Math.ceil(readingMinutes)} 分钟
+  </div>
+</div>
