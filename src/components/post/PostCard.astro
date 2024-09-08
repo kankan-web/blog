@@ -45,7 +45,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
   >
     <!-- 标题 -->
     <a
-      class="post-card-title block font-bold text-2xl w-full mb-1 text-[var(--title-color)] relative hover:text-[var(--primary)] group cursor-pointer"
+      class="post-card-title block font-bold text-2xl w-full text-[var(--title-color)] relative hover:text-[var(--primary)] group cursor-pointer"
     >
       <span
         class="content-[''] block bg-[var(--primary)] rounded-md w-1 h-5 absolute top-0 left-[-20px] translate-y-2"
@@ -53,7 +53,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
       {entry.data.title}
       <Icon
         name="right-arrow"
-        class="inline-block text-[var(--primary)] text-xl align-baseline opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300"
+        class="inline-block text-[var(--primary)] text-xl align-middle opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:align-middle transition-all duration-300"
       />
     </a>
     <!-- 标签 -->
