@@ -3,11 +3,11 @@ import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 const { id, src, alt, basePath = "/", className, imageClass } = Astro.props;
 const images = import.meta.glob<{ default: ImageMetadata }>(
-  "/src/assets/img/*.{jpeg,jpg,png,gif}"
+  "/src/assets/img/*.{jpeg,jpg,png,gif,webp}"
 );
 if (!images[src])
   throw new Error(
-    `"${src}" does not exist in glob: "src/assets/img/*.{jpeg,jpg,png,gif}"`
+    `"${src}" does not exist in glob: "src/assets/img/*.{jpeg,jpg,png,gif,webp}"`
   );
 ---
 

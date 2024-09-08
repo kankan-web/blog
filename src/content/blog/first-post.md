@@ -2,7 +2,7 @@
 title: "First post"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "Jul 08 2022"
-heroImage: "/src/assets/img/avatar.jpg"
+heroImage: "/src/assets/img/longnian.webp"
 date: 2024-04-04
 lastMod: 2024-05-18T07:29:49.820Z
 tags: [Video, Markdown]

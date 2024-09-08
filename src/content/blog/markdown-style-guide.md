@@ -1,6 +1,6 @@
 ---
 title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro."
+description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.guiguigoifhiodshfio11发的死和非i哦啊哈1fiohdsfih111分i哦的挥洒发i11哦发i和大赛"
 pubDate: "Jul 01 2022"
 heroImage: "/src/assets/img/avatar.jpg"
 date: 2024-04-04
