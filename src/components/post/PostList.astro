@@ -17,6 +17,7 @@ const { posts } = Astro.props;
           <PostCard
             entry={post}
             index={index}
+            slug={post.slug}
             title={post.data.title}
             heroImage={post.data.heroImage}
             category={post.data.category}

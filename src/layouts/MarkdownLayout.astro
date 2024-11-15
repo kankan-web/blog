@@ -1,0 +1,11 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Navbar from "@components/base/Navbar.astro";
+---
+
+<BaseLayout>
+  <Navbar />
+  <main class="relative z-1 min-h-max bg-primary">
+    <slot />
+  </main>
+</BaseLayout>

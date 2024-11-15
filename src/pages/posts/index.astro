@@ -1,0 +1,43 @@
+---
+import MarkdownLayout from "@/layouts/MarkdownLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { getSortedPosts } from "@/utils/content";
+import { Debug } from "astro:components";
+
+export const getStaticPaths = (async () => {
+  const sortedPosts = await getSortedPosts();
+  return sortedPosts.map((post, index) => ({
+    params: { slug: post.slug },
+    props: {
+      current: post,
+      prev: index > 0 ? sortedPosts[index - 1] : undefined,
+      next: index < sortedPosts.length - 1 ? sortedPosts[index + 1] : undefined,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  current: CollectionEntry<"blog">;
+  prev?: CollectionEntry<"blog">;
+  next?: CollectionEntry<"blog">;
+}
+
+const { current, prev, next } = Astro.props;
+console.log("current", current);
+// const { headings, Content, remarkPluginFrontmatter } = await current.render();
+---
+
+<!-- <Debug {next} /> -->
+<MarkdownLayout>
+  <div
+    class="max-w-[1100px] mx-auto px-4 md:px-8 py-16 grid lg:grid-cols-[auto_260px] gap-8"
+    data-pagefind-body
+  >
+    <div>
+      <header class="space-y-4">
+        {current ? <h1>{current.data.title}</h1> : <h1>没有当前文章</h1>}
+      </header>
+    </div>
+  </div>
+</MarkdownLayout>
