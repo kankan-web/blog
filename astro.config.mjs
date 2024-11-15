@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import preact from "@astrojs/preact";
+import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
@@ -10,7 +10,7 @@ import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 export default defineConfig({
   site: "https://example.com",
   base: "/",
-  integrations: [mdx(), sitemap(), preact(), tailwind(), icon()],
+  integrations: [mdx(), sitemap(), react(), tailwind(), icon()],
   markdown: {
     remarkPlugins: [remarkReadingTime],
   },

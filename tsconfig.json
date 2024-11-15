@@ -4,7 +4,7 @@
     "baseUrl": ".",//设置baseurl
     "strictNullChecks": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact",
+    "jsxImportSource": "react",
      "plugins": [
       {
         "name": "@astrojs/ts-plugin"

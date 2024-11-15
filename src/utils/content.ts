@@ -19,3 +19,7 @@ export async function getSortedPosts() {
   });
 }
 
+//转为URL安全的slug，删除点，空格转为短横线，大写转为小写
+export function slugify(text: string) {
+  return text.replace(/\./g,'').replace(/\s/g,'-').toLowerCase()
+}

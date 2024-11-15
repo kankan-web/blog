@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+import { slugify } from "@/utils/content";
+interface Props {
+  className?: string;
+  category?: string;
+  tags: string[];
+}
+const { category, tags, className } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-2 text-sm text-secondary text-[var(--text-secondary)]" class:list={className}>
+  {
+    category && (
+      <div class="flex items-center"> <!-- 添加 flex 和 items-center -->
+        <Icon name="folder" class="inline-block w-4 h-4 mr-1" /> <!-- 添加 mr-1 为右侧边距 -->
+        <a
+          href={`/categories/${slugify(category)}`}
+          class="hover:underline underline-offset-2 decoration-dashed hover:text-accent"
+        >
+          {category}
+        </a>
+      </div>
+    )
+  }
+  {tags.length > 0 && (
+    <div class="flex flex-wrap gap-1">
+      {tags.map((tag) => (
+        <a
+          class="hover:underline underline-offset-2 decoration-dashed hover:text-accent"
+          href={`/tags/${slugify(tag)}`}
+        >
+          #{tag}
+        </a>
+      ))}
+    </div>
+  )}
+</div>

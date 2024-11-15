@@ -1,0 +1,60 @@
+---
+import MarkdownLayout from "@/layouts/MarkdownLayout.astro";
+import PostMetaInfo from "@components/post/PostMetaInfo.astro";
+import PostArchiveInfo from "@components/post/PostArchiveInfo.astro";
+import { Outdate } from "@components/post/Outdate";
+
+import type { CollectionEntry } from "astro:content";
+import type { GetStaticPaths } from "astro";
+import { getSortedPosts } from "@/utils/content";
+
+export const getStaticPaths = (async () => {
+  const sortedPosts = await getSortedPosts();
+  return sortedPosts.map((post, index) => ({
+    params: { slug: post.slug },
+    props: {
+      current: post,
+      prev: index > 0 ? sortedPosts[index - 1] : undefined,
+      next: index < sortedPosts.length - 1 ? sortedPosts[index + 1] : undefined,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+interface Props {
+  current: CollectionEntry<"blog">;
+  prev?: CollectionEntry<"blog">;
+  next?: CollectionEntry<"blog">;
+}
+
+const { current, prev, next } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await current.render();
+
+const lastMod = current.data.lastMod || current.data.date;
+---
+
+<!-- <Debug {next} /> -->
+<MarkdownLayout>
+  <div
+    class="max-w-[var(--page-width)] mx-auto px-0 md:px-0 py-12 grid lg:grid-cols-[auto_260px] gap-8"
+    data-pagefind-body
+  >
+    <header class="space-y-4 border">
+      <h1 class="text-4xl font-bold text-center">{current.data.title}</h1>
+      <PostMetaInfo
+        className="justify-center"
+        date={current.data.date}
+        words={remarkPluginFrontmatter.words}
+        readingMinutes={remarkPluginFrontmatter.readingMinutes}
+      />
+      <PostArchiveInfo
+        className="justify-center"
+        category={current.data.category}
+        tags={current.data.tags}
+      />
+      <div>
+        <Outdate lastMod={lastMod} client:idle />
+      </div>
+    </header>
+    <div class="col-start-1 min-w-0">内容展示</div>
+  </div>
+</MarkdownLayout>

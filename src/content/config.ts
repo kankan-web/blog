@@ -6,6 +6,7 @@ const blog = defineCollection({
   schema: z.object({
     title: z.string(), //文章标题
     date: z.date(), //文章日期
+    lastMod:z.date(),//最新编集时间
     description: z.string(), //文章描述
     cover: z.string().optional(), //封面
     category: z.string().optional(), //分类

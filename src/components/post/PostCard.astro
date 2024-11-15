@@ -12,8 +12,9 @@ interface Props {
   category?: string;
   description: string;
   tags: string[];
+  slug?: string;
 }
-const { entry, index, title, heroImage, category, description, tags } =
+const { entry, index, title, heroImage, category, description, tags, slug } =
   Astro.props;
 const { Content, remarkPluginFrontmatter } = await entry.render();
 ---
@@ -24,6 +25,7 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
 >
   <!-- 图片 -->
   <a
+    href={`/posts/${slug}`}
     class="post-card-image block w-1/3 flex-shrink-0 h-full cursor-pointer relative"
   >
     <ImageWrapper
@@ -45,12 +47,13 @@ const { Content, remarkPluginFrontmatter } = await entry.render();
   >
     <!-- 标题 -->
     <a
+      href={`/posts/${slug}`}
       class="post-card-title block font-bold text-2xl w-full text-[var(--title-color)] relative hover:text-[var(--primary)] group cursor-pointer"
     >
       <span
         class="content-[''] block bg-[var(--primary)] rounded-md w-1 h-5 absolute top-0 left-[-20px] translate-y-2"
       ></span>
-      {entry.data.title}
+      {title}
       <Icon
         name="right-arrow"
         class="inline-block text-[var(--primary)] text-xl align-middle opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:align-middle transition-all duration-300"
