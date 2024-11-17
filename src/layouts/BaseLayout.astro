@@ -1,7 +1,8 @@
 ---
 // import "../styles/global.css";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@/constants/contant";
-const { pageTitle } = Astro.props;
+import { AccentColorInjector } from '@/components/head'
+import { SITE_TITLE, SITE_DESCRIPTION } from '@/constants/contant'
+const { pageTitle } = Astro.props
 ---
 
 <!doctype html>
@@ -12,6 +13,7 @@ const { pageTitle } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>阿蛋个人博客</title>
+    <AccentColorInjector />
   </head>
   <body>
     <div class="w-full">
@@ -34,7 +36,7 @@ const { pageTitle } = Astro.props;
 </style>
 
 <style is:global>
-  @import url("../styles/global.css");
+  @import url('../styles/global.css');
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
