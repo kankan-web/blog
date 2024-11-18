@@ -1,8 +1,8 @@
 ---
-title: "First post"
-description: "Lorem ipsum dolor sit amet"
-pubDate: "Jul 08 2022"
-heroImage: "/src/assets/img/longnian.webp"
+title: 'First post'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jul 08 2022'
+heroImage: '/src/assets/img/longnian.webp'
 date: 2024-04-04
 lastMod: 2024-05-18T07:29:49.820Z
 tags: [Video, Markdown]
@@ -10,13 +10,157 @@ category: 例子
 summary: 这篇文章介绍了如何在文章中嵌入视频和代码。
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
+## 前置条件
 
-Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa ultricies mi.
+- node 版本 >= 18.18.0
+- pnpm 版本 > 8.1.0
 
-Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
+## 安装
 
-Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
+### 克隆仓库
 
-Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
+登录 Github 账号，打开 [lxchapu/astro-gyoza](https://github.com/lxchapu/astro-gyoza)，点击右上角的 Fork 按钮，将仓库克隆到你自己的账号下。
 
+复制这个仓库的地址，打开终端，使用 `git clone` 命令将仓库克隆到本地。
+
+> 本项目推荐使用 pnpm 作为你的包管理器，如果你还没有安装 pnpm，请先安装 pnpm。
+
+### 安装依赖
+
+```sh
+cd astro-gyoza
+pnpm install
+```
+
+### 命令介绍这里有很多的数据内容，请认真填写
+
+本地运行
+
+```sh
+pnpm dev
+```
+
+打包静态文件
+
+```sh
+pnpm build
+```
+
+本地预览
+
+```sh
+pnpm preview
+```
+
+### 配置项
+
+本项目中的绝大部分配置都定义在 `src/config.json` 文件中。
+
+你应该首先将 `site.url` 修改成自己的域名，避免导航错误。
+
+以下是配置项的说明：
+
+```json
+{
+  "site": {
+    "url": "", // 网站地址
+    "title": "", // 网站标题
+    "description": "", // 通用的网站描述 SEO
+    "keywords": "", // 通用的网站关键词 SEO
+    "lang": "zh-CN", // 网站的语言
+    "favicon": "", // 浏览器图标，存放在 public 目录下
+    "appleTouchIcon": "" // 苹果设备图标，存放在 public 目录下
+  },
+  "author": {
+    "name": "", // 作者名称
+    "twitterId": "", // 推特账号 ID，以 @ 开头，用于 Open Graph
+    "avatar": "" // 作者头像地址
+  },
+  // 首页 Hero 组件
+  "hero": {
+    "name": "", // 显示的名称
+    "bio": "", // 一句话介绍
+    "description": "", // 补充描述
+    // 社交账号
+    "socials": [
+      {
+        "name": "", // 社交平台类型
+        "icon": "", // 社交平台图标
+        "url": "", // 链接
+        "color": "" // 图标颜色
+      }
+    ],
+    "yiyan": "" // 显示一言
+  },
+  "color": {
+    // 强调色，请填写 16 进制颜色值。每次会从中随机取出一组
+    "accent": [{ "light": "", "dark": "" }],
+    // 背景色
+    "bg": {
+      "primary": { "light": "", "dark": "" },
+      "secondary": { "light": "", "dark": "" }
+    },
+    // 文字颜色
+    "text": {
+      "primary": { "light": "", "dark": "" },
+      "secondary": { "light": "", "dark": "" }
+    },
+    // 边框颜色
+    "border": {
+      "primary": { "light": "", "dark": "" }
+    }
+  },
+  // 顶部导航栏
+  "menus": [
+    {
+      "name": "首页",
+      "link": "/",
+      "icon": "icon-pantone"
+    }
+  ],
+  "posts": {
+    "perPage": 10 // 每一页显示的文章数量
+  },
+  "footer": {
+    "startTime": "" // 博客网站开始时间 请使用 ISO 格式
+  },
+  // Waline 评论系统，前往 https://waline.js.org/ 查看
+  "waline": {
+    "serverURL": ""
+  },
+  // 赞助
+  "sponsor": {
+    "wechat": "" // 微信赞赏码图片地址
+  },
+  // 如果需要使用网站数据统计，将 enable 修改为 true，并填写对应的配置
+  "analytics": {
+    "enable": false,
+    // https://analytics.google.com
+    "google": {
+      "measurementId": ""
+    },
+    // https://umami.is/docs
+    "umami": {
+      "serverUrl": "",
+      "websiteId": ""
+    },
+    // https://clarity.microsoft.com/
+    "microsoftClarity": {
+      "projectId": ""
+    }
+  }
+}
+```
+
+## 部署
+
+> 这里只介绍了 Vercel，你当然可以选择其他平台例如：Cloudflare Pages 或你自己的服务器。  
+> 部署之前，确保你已经修改 `site.url`。
+
+### 部署到 Vercel
+
+登录 Vercel 账号，点击右上角的 Add new... 选择 Project。然后在 Import Git Repository 中选择刚刚 Fork 的仓库，点击 Import 按钮。
+
+进入项目配置页面，直接点击 Deploy 按钮，静静等待部署完成就 👌 了。
+
+Vercel 会为你分配一个域名，你可以在项目设置中设置自定义域名，更多操作请参考 Vercel 文档。

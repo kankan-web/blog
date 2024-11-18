@@ -1,15 +1,20 @@
 ---
-import MarkdownLayout from "@/layouts/MarkdownLayout.astro";
-import PostMetaInfo from "@components/post/PostMetaInfo.astro";
-import PostArchiveInfo from "@components/post/PostArchiveInfo.astro";
-import { Outdate } from "@components/post/Outdate";
+import MarkdownLayout from '@/layouts/MarkdownLayout.astro'
+import PostMetaInfo from '@components/post/PostMetaInfo.astro'
+import PostArchiveInfo from '@components/post/PostArchiveInfo.astro'
 
-import type { CollectionEntry } from "astro:content";
-import type { GetStaticPaths } from "astro";
-import { getSortedPosts } from "@/utils/content";
+import MarkdownWrapper from '@/components/markdown/MarkdownWrapper.astro'
+import { Outdate } from '@components/post/Outdate'
+
+import SectionBlock from '@/components/SectionBlock.astro'
+import { PostToc } from '@/components/post/PostToc'
+
+import type { CollectionEntry } from 'astro:content'
+import type { GetStaticPaths } from 'astro'
+import { getSortedPosts } from '@/utils/content'
 
 export const getStaticPaths = (async () => {
-  const sortedPosts = await getSortedPosts();
+  const sortedPosts = await getSortedPosts()
   return sortedPosts.map((post, index) => ({
     params: { slug: post.slug },
     props: {
@@ -17,28 +22,44 @@ export const getStaticPaths = (async () => {
       prev: index > 0 ? sortedPosts[index - 1] : undefined,
       next: index < sortedPosts.length - 1 ? sortedPosts[index + 1] : undefined,
     },
-  }));
-}) satisfies GetStaticPaths;
+  }))
+}) satisfies GetStaticPaths
 
 interface Props {
-  current: CollectionEntry<"blog">;
-  prev?: CollectionEntry<"blog">;
-  next?: CollectionEntry<"blog">;
+  current: CollectionEntry<'blog'>
+  prev?: CollectionEntry<'blog'>
+  next?: CollectionEntry<'blog'>
 }
 
-const { current, prev, next } = Astro.props;
-const { Content, remarkPluginFrontmatter } = await current.render();
+const { current, prev, next } = Astro.props
+const mdDescription = concat(current.data.category || '', current.data.tags.join(', '))
+function concat(str1: string, str2: string, sep = ' / ') {
+  if (str1 && str2) return str1 + sep + str2
+  if (str1) return str1
+  if (str2) return str2
+  return ''
+}
+const mdSlug = `/posts/${current.slug}`
 
-const lastMod = current.data.lastMod || current.data.date;
+const { headings, Content, remarkPluginFrontmatter } = await current.render()
+
+const lastMod = current.data.lastMod || current.data.date
 ---
 
 <!-- <Debug {next} /> -->
-<MarkdownLayout>
+<MarkdownLayout
+  title={current.data.title}
+  image={current.data.cover}
+  mdTitle={current.data.title}
+  description={current.data.description}
+  mdDescription={mdDescription}
+  mdSlug={mdSlug}
+>
   <div
-    class="max-w-[var(--page-width)] mx-auto px-0 md:px-0 py-12 grid lg:grid-cols-[auto_260px] gap-8"
+    class="max-w-[var(--page-width)] mx-auto px-0 md:px-0 py-8 pt-4 grid lg:grid-cols-[auto_260px] gap-4"
     data-pagefind-body
   >
-    <header class="space-y-4 border">
+    <header class="space-y-4 p-8 bg-primary card-base">
       <h1 class="text-4xl font-bold text-center">{current.data.title}</h1>
       <PostMetaInfo
         className="justify-center"
@@ -51,10 +72,29 @@ const lastMod = current.data.lastMod || current.data.date;
         category={current.data.category}
         tags={current.data.tags}
       />
-      <div>
+      <div class="m-auto max-w-[80%]">
         <Outdate lastMod={lastMod} client:idle />
       </div>
     </header>
-    <div class="col-start-1 min-w-0">内容展示</div>
+    <div class="col-start-1 min-w-0 card-base px-8 py-8">
+      <MarkdownWrapper>
+        <Content />
+      </MarkdownWrapper>
+    </div>
+    <div class="hidden lg:block">
+      <div class="sticky top-20">
+        <aside id="directory" class="card-base overflow-y-auto">
+          <SectionBlock title="目录">
+            <PostToc headings={headings} client:idle />
+            <!-- <ReadingProgress client:idle /> -->
+          </SectionBlock>
+        </aside>
+        <section class="">推荐文章</section>
+      </div>
+    </div>
+
+    <div class="">
+      <section>我是评论区部分</section>
+    </div>
   </div>
 </MarkdownLayout>

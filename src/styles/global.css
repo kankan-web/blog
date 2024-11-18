@@ -1,3 +1,5 @@
+@import './markdown.css';
+
 html {
   background-color: #f1f5f9;
   font-family: sans-serif;
@@ -15,16 +17,16 @@ html {
   box-sizing: border-box;
 }
 /* 全局样式设置 */
- :root {
-    /* --hue: var(--configHue); */
-    --page-width: 75rem;
-    --card-bg: white;
-    --radius-large: 1rem;
-    /* 主题颜色 */
-    --primary:oklch(.7 .14 250 );
-    --text-white:#fff;
-    --post-border:1px solid #e0e3ed;
-  }
+:root {
+  /* --hue: var(--configHue); */
+  --page-width: 75rem;
+  --card-bg: white;
+  --radius-large: 1rem;
+  /* 主题颜色 */
+  --primary: oklch(0.7 0.14 250);
+  --text-white: #fff;
+  --post-border: 1px solid #e0e3ed;
+}
 /* 导航样式 */
 .hamburger {
   padding-right: 20px;
@@ -58,7 +60,6 @@ html {
   text-transform: uppercase;
 }
 
-
 .nav-links a:hover,
 .nav-links a:focus {
   background-color: #ff9776;
@@ -67,7 +68,6 @@ html {
 .expanded {
   display: unset;
 }
-
 
 @media screen and (min-width: 636px) {
   .nav-links {
@@ -83,7 +83,7 @@ html {
     padding: 15px 20px;
   }
 
-	.hamburger {
+  .hamburger {
     display: none;
   }
 }
@@ -96,15 +96,15 @@ html.dark {
   color: #fff;
 }
 /* 多行省略 */
-  .multi-line-ellipsis {
-    display: -webkit-box;
-    -webkit-line-clamp: 2; /* 控制显示的行数 */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .single-line-ellipsis {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.multi-line-ellipsis {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 控制显示的行数 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.single-line-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
