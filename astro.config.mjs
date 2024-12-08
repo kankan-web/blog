@@ -23,7 +23,7 @@ import vercel from '@astrojs/vercel/serverless' // 确保使用正确的适配�
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://kankan-blog.vercel.app/',
   base: '/',
   integrations: [mdx(), sitemap(), react(), tailwind(), icon()],
   markdown: {
@@ -45,7 +45,6 @@ export default defineConfig({
       rehypeCodeHighlight,
     ],
   },
-  outDir: 'dist', // 确保输出目录设置正确
   output: 'server',
   adapter: vercel(),
 })
