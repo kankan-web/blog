@@ -19,8 +19,6 @@ import { rehypeHeading } from './src/plugins/rehypeHeading' //标题头部增强
 import { rehypeCodeBlock } from './src/plugins/rehypeCodeBlock' //代码渲染优化
 import { rehypeCodeHighlight } from './src/plugins/rehypeCodeHighlight' //语法高亮
 
-import vercel from '@astrojs/vercel/serverless' // 确保使用正确的适配器
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://kankan-blog.vercel.app/',
@@ -45,6 +43,4 @@ export default defineConfig({
       rehypeCodeHighlight,
     ],
   },
-  output: 'server',
-  adapter: vercel(),
 })
