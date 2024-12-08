@@ -1,49 +1,46 @@
 ---
-import type { GetStaticPaths } from "astro";
-import MainGridLayout from "../layouts/MainGridLayout.astro";
-import Greeting from "../components/Greeting";
-import SideBar from "@components/base/SideBar.astro";
-import { getSortedPosts } from "@/utils/content";
-import { pagination } from "@/constants/config";
-import PostList from "@components/post/PostList.astro";
-import PostPagination from "@components/post/PostPagination.astro";
+import type { GetStaticPaths } from 'astro'
+import MainGridLayout from '../layouts/MainGridLayout.astro'
+import Greeting from '../components/Greeting'
+import SideBar from '@components/base/SideBar.astro'
+import { getSortedPosts } from '@/utils/content'
+import { pagination } from '@/constants/config'
+import PostList from '@components/post/PostList.astro'
+import PostPagination from '@components/post/PostPagination.astro'
 
 export const getStaticPaths = (async () => {
-  const sortedPosts = await getSortedPosts();
-  const perPage = pagination.size;
-  const totalPages = Math.ceil(sortedPosts.length / perPage);
+  const sortedPosts = await getSortedPosts()
+  const perPage = pagination.size
+  const totalPages = Math.ceil(sortedPosts.length / perPage)
 
-  const paths = Array.from({ length: totalPages }).map((_, i) => {
-    const data = sortedPosts.slice(i * perPage, (i + 1) * perPage);
-    const props = { currentPage: i + 1, totalPages, data };
-    const params = {
-      page: i === 0 ? undefined : `page/${i + 1}`,
-    };
-    return { params, props };
-  });
+  return Array.from({ length: totalPages }).map((_, i) => {
+    const data = sortedPosts.slice(i * perPage, (i + 1) * perPage)
+    return {
+      params: { page: i === 0 ? undefined : `page/${i + 1}` },
+      props: {
+        currentPage: i + 1,
+        totalPages,
+        data,
+      },
+    }
+  })
+}) satisfies GetStaticPaths
 
-  return paths;
-}) satisfies GetStaticPaths;
-
-const { currentPage, totalPages, data } = Astro.props;
+const { currentPage, totalPages, data } = Astro.props
 
 const getPageUrl = (page: number) => {
-  if (page === 1) return "/";
-  return `/page/${page}`;
-};
+  if (page === 1) return '/'
+  return `/page/${page}`
+}
 ---
 
 <MainGridLayout>
   <SideBar slot="sidebar" />
-  <div class="blog">
+  <div className="blog">
     <PostList posts={data}>
       {
         totalPages > 1 && (
-          <PostPagination
-            current={currentPage}
-            total={totalPages}
-            getPageUrl={getPageUrl}
-          />
+          <PostPagination current={currentPage} total={totalPages} getPageUrl={getPageUrl} />
         )
       }
     </PostList>
