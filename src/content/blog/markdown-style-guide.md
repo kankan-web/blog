@@ -1,8 +1,8 @@
 ---
-title: "Markdown Style Guide"
-description: "Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.guiguigoifhiodshfio11发的死和非i哦啊哈1fiohdsfih111分i哦的挥洒发i11哦发i和大赛"
-pubDate: "Jul 01 2022"
-heroImage: "/src/assets/img/avatar.jpg"
+title: 'Markdown Style Guide'
+description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.guiguigoifhiodshfio11发的死和非i哦啊哈1fiohdsfih111分i哦的挥洒发i11哦发i和大赛'
+pubDate: 'Jul 01 2022'
+heroImage: '/src/assets/img/avatar.jpg'
 date: 2024-04-04
 lastMod: 2024-05-18T07:29:49.820Z
 tags: [Video, Markdown]
@@ -98,13 +98,23 @@ The blockquote element represents content that is quoted from another source, op
 
 ## Code Blocks
 
+## 链接
+
+这是内部链接 [Gyoza 使用指南](/posts/guide)
+
+这是外部连接 [React **中文**文档](https://zh-hans.react.dev/)
+
+自动渲染成连接 <https://github.com>
+
+邮箱地址 <mail@example.com>
+
 #### Syntax
 
 we can use 3 backticks ``` in new line and write snippet and close with 3 backticks on new line and to highlight language specific syntac, write one word of language name after first 3 backticks, for eg. html, javascript, css, markdown, typescript, txt, bash
 
 ````markdown
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -120,7 +130,7 @@ we can use 3 backticks ``` in new line and write snippet and close with 3 backti
 Output
 
 ```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -218,3 +228,6 @@ Press <kbd><kbd>CTRL</kbd>+<kbd>ALT</kbd>+<kbd>Delete</kbd></kbd> to end the ses
 
 Most <mark>salamanders</mark> are nocturnal, and hunt for insects, worms, and other small creatures.
 
+### 链接
+
+[链接](https://blog.leonus.cn/2024/alive.html)

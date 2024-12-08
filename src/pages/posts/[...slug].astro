@@ -2,13 +2,13 @@
 import MarkdownLayout from '@/layouts/MarkdownLayout.astro'
 import PostMetaInfo from '@components/post/PostMetaInfo.astro'
 import PostArchiveInfo from '@components/post/PostArchiveInfo.astro'
-
+import PostCopyRight from '@/components/post/PostCopyRight.astro'
+import PostNav from '@/components/post/PostNav.astro'
 import MarkdownWrapper from '@/components/markdown/MarkdownWrapper.astro'
 import { Outdate } from '@components/post/Outdate'
 
 import SectionBlock from '@/components/SectionBlock.astro'
 import { PostToc } from '@/components/post/PostToc'
-
 import type { CollectionEntry } from 'astro:content'
 import type { GetStaticPaths } from 'astro'
 import { getSortedPosts } from '@/utils/content'
@@ -79,6 +79,8 @@ const lastMod = current.data.lastMod || current.data.date
     <div class="col-start-1 min-w-0 card-base px-8 py-8">
       <MarkdownWrapper>
         <Content />
+        <PostCopyRight link={mdSlug} />
+        <PostNav prev={prev} next={next} />
       </MarkdownWrapper>
     </div>
     <div class="hidden lg:block">
@@ -86,15 +88,14 @@ const lastMod = current.data.lastMod || current.data.date
         <aside id="directory" class="card-base overflow-y-auto">
           <SectionBlock title="目录">
             <PostToc headings={headings} client:idle />
-            <!-- <ReadingProgress client:idle /> -->
           </SectionBlock>
         </aside>
-        <section class="">推荐文章</section>
+        <!-- <section class="">推荐文章</section> -->
       </div>
     </div>
 
     <div class="">
-      <section>我是评论区部分</section>
+      <!-- <section>我是评论区部分</section> -->
     </div>
   </div>
 </MarkdownLayout>

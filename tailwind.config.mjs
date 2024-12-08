@@ -42,6 +42,7 @@ export default {
       },
       borderColor: {
         primary: 'rgb(var(--color-border-primary))',
+        post: 'rgb(var(--post-border))',
       },
       minHeight: {
         main: 'calc(100vh - 200px)',

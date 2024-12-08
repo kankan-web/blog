@@ -25,7 +25,7 @@ html {
   /* 主题颜色 */
   --primary: oklch(0.7 0.14 250);
   --text-white: #fff;
-  --post-border: 1px solid #e0e3ed;
+  --post-border: #e0e3ed;
 }
 /* 导航样式 */
 .hamburger {

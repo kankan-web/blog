@@ -1,4 +1,5 @@
 ---
+import { ReadingProgress } from '@/components/post/ReadingProgress'
 interface Props {
   title: string
 }
@@ -7,6 +8,13 @@ const { title } = Astro.props
 ---
 
 <section class="max-h-[400px] flex flex-col pb-4">
-  <div class="px-4 pt-4 pb-2 font-bold uppercase tracking-widest text-accent">{title}</div>
+  <div
+    class="px-4 pt-4 pb-2 font-bold uppercase tracking-widest text-accent text-xl flex justify-between"
+  >
+    <span>{title}</span>
+    <span class="text-secondary">
+      <ReadingProgress client:idle />
+    </span>
+  </div>
   <slot />
 </section>
