@@ -14,6 +14,22 @@ const { pageTitle } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>阿蛋个人博客</title>
     <AccentColorInjector />
+    <script is:inline>
+      // 初始化主题，防止闪烁
+      const theme = (() => {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme-mode')) {
+          return localStorage.getItem('theme-mode')
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          return 'dark'
+        }
+        return 'light'
+      })()
+
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark')
+      }
+    </script>
   </head>
   <body>
     <div class="w-full">

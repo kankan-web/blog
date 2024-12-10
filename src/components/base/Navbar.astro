@@ -2,6 +2,7 @@
 import { url } from "@utils/url-util";
 import { Icon } from "astro-icon/components";
 import { navBarConfig } from "@/constants/config.js";
+import ThemeToggle from './ThemeToggle.astro';
 ---
 
 <div
@@ -35,4 +36,7 @@ import { navBarConfig } from "@/constants/config.js";
   </div>
   <!-- #TODO:搜索部分和主题切换部分 -->
   <div>搜索部分</div>
+  <div class="flex items-center gap-4">
+    <ThemeToggle />
+  </div>
 </div>

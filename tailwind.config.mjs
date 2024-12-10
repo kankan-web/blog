@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-  darkMode: ['selector', '[data-mode="dark"]'],
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: [
@@ -30,6 +30,10 @@ export default {
     extend: {
       colors: {
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
+        primary: {
+          light: '#4f46e5',
+          dark: '#818cf8',
+        },
       },
       textColor: {
         primary: 'rgb(var(--color-text-primary))',

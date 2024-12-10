@@ -26,7 +26,24 @@ html {
   --primary: oklch(0.7 0.14 250);
   --text-white: #fff;
   --post-border: #e0e3ed;
+  /* 亮色主题样式 */
+  --background: #ffffff;
+  --text: #1a1a1a;
+  --primary: #4f46e5;
 }
+
+/* 暗色主题样式 */
+:root.dark {
+  --background: #1a1a1a;
+  --text: #ffffff;
+  --primary: #818cf8;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
 /* 导航样式 */
 .hamburger {
   padding-right: 20px;
