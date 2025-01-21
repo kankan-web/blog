@@ -1,0 +1,36 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro'
+import PostNav from '@/components/post/PostNav.astro'
+import MarkdownWrapper from '@/components/markdown/MarkdownWrapper.astro'
+import { render } from 'astro:content'
+import { getSortedPosts } from '@/utils/content'
+
+export async function getStaticPaths() {
+  const posts = await getSortedPosts('javascript')
+  return posts.map((post, index) => ({
+    params: { post: post.id },
+    props: {
+      current: post,
+      prev: index > 1 ? posts[index - 1] : undefined,
+      next: index < posts.length - 1 ? posts[index + 1] : undefined,
+    },
+  }))
+}
+
+const { current, prev, next } = Astro.props
+// 如果没有找到文章，重定向到404页面
+if (!current) {
+  return Astro.redirect('/404')
+}
+
+// 获取文章内容
+const { headings, Content, remarkPluginFrontmatter } = await render(current)
+---
+
+<BlogLayout title={'javascript'} type="javascript" post={current} headings={headings}>
+  <MarkdownWrapper>
+    <Content />
+    <!-- 底部文章导航，TODO：存在顺序问题 -->
+    <PostNav prev={prev} next={next} />
+  </MarkdownWrapper>
+</BlogLayout>

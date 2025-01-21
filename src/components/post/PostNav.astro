@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content'
+
+interface Props {
+  prev?: CollectionEntry<'javascript' | 'react' | 'network'>
+  next?: CollectionEntry<'javascript' | 'react' | 'network'>
+  class?: string
+}
+
+const { prev, next, class: className } = Astro.props
+---
+
+<div class="grid grid-cols-2 mt-4 pt-2 text-xl border-t" class:list={[className]}>
+  <div>
+    {
+      prev && (
+        <a
+          class="flex items-baseline gap-2 hover:text-accent"
+          href={`/blog/${prev.collection}/${prev.id}`}
+        >
+          <i class="iconfont icon-arrow-left" />
+          <span>{prev.data.title}</span>
+        </a>
+      )
+    }
+  </div>
+  <div>
+    {
+      next && (
+        <a
+          class="flex items-baseline justify-end gap-2 hover:text-accent"
+          href={`/blog/${next.collection}/${next.id}`}
+        >
+          <span>{next.data.title}</span>
+          <i class="iconfont icon-arrow-right" />
+        </a>
+      )
+    }
+  </div>
+</div>

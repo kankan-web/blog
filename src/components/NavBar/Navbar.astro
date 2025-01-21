@@ -1,0 +1,29 @@
+---
+import ThemeSwitcher from './ThemeSwitcher'
+import LanguageSwitcher from './LanguageSwitcher'
+import config from '../../config.json'
+const { menu, site } = config
+---
+
+<div class="flex justify-between items-center">
+  <div class="text-xl font-bold text-primary">{site.title}</div>
+
+  <div class="flex items-center space-x-6">
+    <!-- 导航链接 -->
+    <div class="space-x-4">
+      {
+        menu.map((item) => (
+          <a href={item.path} class="text-secondary hover:text-accent transition-colors">
+            {item.name}
+          </a>
+        ))
+      }
+    </div>
+
+    <!-- 功能按钮组 -->
+    <div class="flex items-center space-x-2 border-l border-border pl-6">
+      <ThemeSwitcher client:load />
+      <!-- <LanguageSwitcher client:load /> -->
+    </div>
+  </div>
+</div>

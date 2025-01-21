@@ -1,0 +1,33 @@
+{
+  "site": {
+    "url": "https://loopy.lxchapu.com",
+    "title": "loopy的编程秘籍",
+    "description": "这是一个前端面试题库",
+    "keywords": "loopy,blog,Astro,theme,lxchapu,博客主题",
+    "lang": "zh-CN",
+    "favicon": "/favicon.ico",
+    "appleTouchIcon": "/apple-touch-icon.png"
+  },
+  "menu": [
+    {
+      "name": "首页",
+      "path": "/"
+    },
+    {
+      "name": "JavaScript",
+      "path": "/blog/javascript"
+    },
+    {
+      "name": "React",
+      "path": "/blog/react"
+    },
+    {
+      "name": "计算机网络",
+      "path": "/blog/network"
+    },
+    {
+      "name": "关于",
+      "path": "/about"
+    }
+  ]
+}

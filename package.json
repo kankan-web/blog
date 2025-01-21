@@ -1,18 +1,52 @@
 {
-  "name": "blog",
+  "name": "interview-question",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "prettier --write .",
+    "prepare": "pnpm exec simple-git-hooks"
   },
   "dependencies": {
-    "@astrojs/mdx": "^2.3.1",
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.4",
-    "astro": "^4.6.4"
+    "@astrojs/markdown-remark": "^6.0.2",
+    "@astrojs/react": "^4.1.5",
+    "@astrojs/tailwind": "^5.1.4",
+    "@shikijs/rehype": "^1.27.2",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "astro": "^5.1.7",
+    "clsx": "^2.1.1",
+    "hastscript": "^9.0.0",
+    "jotai": "^2.11.0",
+    "lodash-es": "^4.17.21",
+    "mdast-util-to-string": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "reading-time": "^1.5.0",
+    "rehype-katex": "^7.0.1",
+    "remark-directive": "^3.0.0",
+    "remark-math": "^6.0.0",
+    "shiki": "^1.27.2",
+    "tailwindcss": "^3.4.17",
+    "unist-util-visit": "^5.0.0"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "lint-staged": "^15.4.1",
+    "micromark-util-symbol": "^2.0.1",
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "simple-git-hooks": "^2.11.1"
+  },
+  "simple-git-hooks": {
+    "commit-msg": "pnpm exec commitlint --edit $1",
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx.astro,md,css,json}": "prettier --write"
   }
 }

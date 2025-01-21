@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content'
+import { transformMenuData } from '@/utils/data'
+
+export interface ListItem {
+  id: string
+  title: string
+  description: string
+  pubDate: Date
+  category: string
+  tags: string[]
+  draft: boolean
+}
+//TODO:Typescript没有设置
+
+const { type, post } = Astro.props
+
+const data = await getCollection(type)
+
+const list = data.map((item: any) => {
+  return {
+    id: item.id,
+    ...item.data,
+  }
+}) as ListItem[]
+
+const menu = transformMenuData(list)
+---
+
+<ul class="pl-4">
+  {
+    menu.map((item) => (
+      <li class="font-thin">
+        <div class="text-base font-semibold py-1 text-black dark:text-white capitalize">
+          {item.title}
+        </div>
+        {item.children && item.children.length > 0 && (
+          <ul class="border-l border-gray-200">
+            {item.children.map((child: any) => (
+              <li
+                class={`pl-4 ${child.id === post.id ? 'bg-gray-100 border-l-2 border-blue-500 dark:bg-white/5' : ''}`}
+              >
+                <a
+                  href={`/blog/${type}/${child.id}`}
+                  class="text-base block py-1 hover:text-blue-500"
+                >
+                  {child.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    ))
+  }
+</ul>

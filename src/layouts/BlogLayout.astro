@@ -1,0 +1,45 @@
+---
+import Layout from './Layout.astro'
+import Navbar from '@/components/NavBar/Navbar.astro'
+import { Provider } from '@/components/provider/Provider'
+import ArticleList from '@/components/ArticleList.astro'
+import SectionBlock from '@/components/post/SectionBlock.astro'
+import { PostToc } from '@/components/post/PostToc.tsx'
+import type { MarkdownHeading } from 'astro'
+
+interface Props {
+  title?: string
+  type: string
+  post: any
+  headings: MarkdownHeading[]
+}
+
+const { title = '博客', type, post, headings } = Astro.props
+---
+
+<Layout title={title}>
+  <Provider client:only="react" />
+  <Navbar slot="nav" />
+  <main class="grid grid-cols-12 gap-4 h-full">
+    <!-- 左侧文章列表 -->
+    <aside class="col-span-2 border-r border-gray-200 dark:border-gray-700 h-full">
+      <div class="sticky top-[57px] h-[calc(100vh-72px)] overflow-y-auto pt-4">
+        <ArticleList type={type} post={post} />
+      </div>
+    </aside>
+
+    <!-- 中间文章内容 -->
+    <article class="col-span-8 px-6 py-4 h-full overflow-y-auto">
+      <slot />
+    </article>
+
+    <!-- 右侧文章目录 -->
+    <aside class="col-span-2 border-l border-gray-200 dark:border-gray-700 h-full">
+      <div class="sticky top-[57px] h-[calc(100vh-72px)] overflow-y-auto pt-4">
+        <SectionBlock title="目录" slot="post-contents">
+          <PostToc headings={headings} client:idle />
+        </SectionBlock>
+      </div>
+    </aside>
+  </main>
+</Layout>

@@ -1,0 +1,26 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro'
+import ArticleList from '@/components/ArticleList.astro'
+import { getCollection, render } from 'astro:content'
+
+import MarkdownWrapper from '@/components/markdown/MarkdownWrapper.astro'
+import SectionBlock from '@/components/post/SectionBlock.astro'
+import { PostToc } from '@/components/post/PostToc.tsx'
+import { getAllPosts } from '@/utils/content'
+
+const posts = await getAllPosts('javascript')
+
+const post = posts.find((item) => item.data.sticky)
+
+if (!post) {
+  return Astro.redirect('/404')
+}
+
+const { headings, Content, remarkPluginFrontmatter } = await render(post)
+---
+
+<BlogLayout title="JavaScript 教程" type="javascript" post={post} headings={headings}>
+  <MarkdownWrapper>
+    <Content />
+  </MarkdownWrapper>
+</BlogLayout>

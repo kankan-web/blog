@@ -1,0 +1,59 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="zh" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="h-full bg-primary text-primary transition-colors duration-300">
+    <div class="flex flex-col h-full w-full">
+      <header class="fixed top-0 w-full z-50 bg-secondary border-b border-border">
+        <nav class="mx-auto px-4 py-2">
+          <slot name="nav" />
+        </nav>
+      </header>
+
+      <main class="flex-1 w-full mt-[57px]">
+        <slot />
+      </main>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @import './markdown.css';
+
+  :root {
+    --bg-primary: theme('colors.light.primary');
+    --bg-secondary: theme('colors.light.secondary');
+    --accent: theme('colors.light.accent');
+    --text-primary: theme('colors.light.text.primary');
+    --text-secondary: theme('colors.light.text.secondary');
+    --text-accent: theme('colors.light.text.accent');
+    --border-color: theme('colors.light.border');
+  }
+
+  .dark {
+    --bg-primary: theme('colors.dark.primary');
+    --bg-secondary: theme('colors.dark.secondary');
+    --accent: theme('colors.dark.accent');
+    --text-primary: theme('colors.dark.text.primary');
+    --text-secondary: theme('colors.dark.text.secondary');
+    --text-accent: theme('colors.dark.text.accent');
+    --border-color: theme('colors.dark.border');
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+  }
+</style>
